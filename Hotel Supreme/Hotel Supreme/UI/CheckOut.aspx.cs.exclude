@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Configuration;
+using System.Web.Configuration;
+
+public partial class CheckOut : System.Web.UI.Page
+{
+    private SqlConnection dbConn;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        GridView1.Visible = false;
+        Button2.Enabled = false;
+        Label5.Visible = false;
+        Label6.Visible = false;
+        Label7.Visible = false;
+        Label10.Visible = false;
+        Label11.Visible = false;
+        Label12.Visible = false;
+        Label13.Visible = false;
+        Label14.Visible = false;
+        Configuration webConfiguration = WebConfigurationManager.OpenWebConfiguration("/HMS");
+        ConnectionStringSettings connectionStringSettings = webConfiguration.ConnectionStrings.ConnectionStrings["HMSConnectionString"];
+        string Conn = connectionStringSettings.ConnectionString;
+        dbConn = new SqlConnection("Server=localhost\\SQLExpress;Database=HMS_Data;Integrated Security=SSPI;");
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        Label5.Visible = true;
+        Label6.Visible = true;
+        Label7.Visible = true;
+        Label10.Visible = true;
+        Label11.Visible = true;
+        Label12.Visible = true;
+        Label13.Visible = true;
+        Label14.Visible = true;
+        GridView1.Visible = true;
+        Button2.Enabled = true;
+        SqlDataSource1.SelectCommand = "SELECT CustomerId, RoomId, StartDate, EndDate, Booking_Charges FROM Reservation WHERE CustomerId=" + TextBox6.Text;
+        SqlCommand cmd = new SqlCommand("SELECT Cust_Name, Cust_Address, Cust_Phone, Cust_Cell FROM Customer WHERE CustomerId=" + TextBox6.Text);
+        cmd.Connection = dbConn;
+        dbConn.Open();
+        SqlDataReader r1 = cmd.ExecuteReader();
+        r1.Read();
+        Label10.Text = r1["Cust_Name"].ToString();
+        Label11.Text = r1["Cust_Address"].ToString();
+        Label12.Text = r1["Cust_Phone"].ToString();
+        Label14.Text = r1["Cust_Cell"].ToString();
+        dbConn.Close();
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if (TextBox6.Text == "")
+        {
+            Response.Write("Please Select the Customer to Check Out");
+            return;
+        }
+        for (int i = 0; i < GridView1.DataKeys.Count; i++)
+        {
+            string query = "INSERT INTO AccountsReceivable (Receivable_Amount, Receivable_Date, ReservationId) VALUES (" + GridView1.Rows[i].Cells[4].Text + "," + System.DateTime.Today.ToShortDateString() + "," + GridView1.Rows[i].Cells[0].Text + ")";
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.Connection = dbConn;
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        SqlCommand cmd1 = new SqlCommand("DELETE FROM Reservation WHERE CustomerId=" + TextBox6.Text);
+        cmd1.Connection = dbConn;
+        dbConn.Open();
+        cmd1.ExecuteNonQuery();
+        dbConn.Close();
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Button2.Enabled = false;
+        GridView1.Visible = false;
+        Label5.Visible = false;
+        Label6.Visible = false;
+        Label7.Visible = false;
+        Label10.Visible = false;
+        Label11.Visible = false;
+        Label12.Visible = false;
+        Label13.Visible = false;
+        Label14.Visible = false;
+        TextBox6.Text = "";
+        Label10.Text = "";
+        Label11.Text = "";
+        Label12.Text = "";
+        Label14.Text = "";
+        SqlDataSource1.SelectCommand = "SELECT CustomerId, RoomId, StartDate, EndDate, Booking_Charges FROM Reservation";
+    }
+    protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+}

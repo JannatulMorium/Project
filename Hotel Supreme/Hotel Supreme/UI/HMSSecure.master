@@ -1,0 +1,73 @@
+
+
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="HMSSecure.master.cs" Inherits="UI_HMSSecure" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Theme3.JPG" Width="819px" /></td>
+            </tr>
+            <tr>
+            <td style="width: 824px">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/1.JPG" />
+                <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/2.JPG" />
+                <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/3.JPG" />
+                <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/4.JPG" />
+                <asp:Image ID="Image6" runat="server" ImageUrl="~/Images/5.JPG" />
+                <asp:Image ID="Image7" runat="server" ImageUrl="~/Images/6.JPG" />
+                
+                
+                
+           
+            </td>
+            </tr>
+        </table>
+        </div>
+        <table>
+            <tr>
+                <td valign="top">
+                    <asp:Menu ID="Menu1" runat="server" BackColor="#1B5FCA" DynamicHorizontalOffset="2"
+                        Font-Names="Verdana" Font-Size="0.9em" ForeColor="#FFFFFF" StaticSubMenuIndent="10px" Height="290px">
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                        <DynamicMenuStyle BackColor="#B5C7DE" />
+                        <StaticSelectedStyle BackColor="#507CD1" />
+                        <DynamicSelectedStyle BackColor="#507CD1" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <Items>
+                            <asp:MenuItem Text="Home" Value="Home" NavigateUrl="DefaultSecure.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Employee Management" NavigateUrl="EmployeeManagement.aspx" Value="Employee Management"></asp:MenuItem>
+			 	 			<asp:MenuItem NavigateUrl="Default.aspx" Text="Room Management" Value="HP"></asp:MenuItem>
+                            <asp:MenuItem Text="Reservations" Value="Dell" NavigateUrl="Reservation.aspx?VendorID=Dell"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="CheckOut.aspx" Text="CheckOut" Value="HP"></asp:MenuItem>
+                            <asp:MenuItem Text="Supplier Management" Value="Sony" NavigateUrl="SupplierManagement.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Product Management" Value="Acer" NavigateUrl="ProductManagement.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Accounts" Value="Toshiba" NavigateUrl="DefaultSecure.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Logout" Value="Toshiba" NavigateUrl="Default.aspx"></asp:MenuItem>
+                           
+                           
+                        </Items>
+                        <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                    </asp:Menu>
+                </td>
+                <td>
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+                    </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+	

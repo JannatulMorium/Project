@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "338369042920",
+    "firebase_url": "https://chatapp-197f5.firebaseio.com",
+    "project_id": "chatapp-197f5",
+    "storage_bucket": "chatapp-197f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338369042920:android:36c326d357169d3a",
+        "android_client_info": {
+          "package_name": "com.example.laboni.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338369042920-f558gko5g0u6j5mn7terl1jr8rel5dus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD46DR1Kh_8RZ9H7isoRqyh3sKFOAEP3eM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338369042920-f558gko5g0u6j5mn7terl1jr8rel5dus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
